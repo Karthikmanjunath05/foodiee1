@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="style.css">
 	
 <link rel="stylesheet" href="cart.css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-light bg-light nav-padding">
@@ -40,7 +41,6 @@
 			</form>
 			<a href="" class="nav-link profile-name "><i
 				class="fa-solid fa-user"> </i><%=session.getAttribute("name")%></a>
-			</li>
 		</div>
 		<a href="logout"><button class="btn btn-outline-danger logout">Logout</button></a>
 	</nav>
@@ -71,7 +71,21 @@
                         </td>
                         <td style="width:25%">Crumb fried cheese burst patty Serving Size: 230gms Energy per 100 gms: 276.13Kcal Contains: Milk, Soy, Gluten</td>
                         <td style="width:12%">Rs.30</td>
-                        <td style="width:12%">1</td>
+                        <td style="width:12%">
+                        	 <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn btn-danger btn-number"  style="border-radius: 10px 2px 2px 10px;"  data-type="minus" data-field="">
+                                          <span >-</span>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity" class="form-control input-number" style="text-align:center" value="10" min="1" max="100">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn btn-success btn-number"  style="border-radius: 2px 10px 10px 2px;" data-type="plus" data-field="">
+                                            <span >+</span>
+                                        </button>
+                                    </span>
+                                </div>
+                        </td>
                          <td style="width:12%">Rs.30</td>
                         
                         <td>
@@ -86,7 +100,21 @@
                         </td>
                         <td style="width:25%">Crumb fried cheese burst patty Serving Size: 230gms Energy per 100 gms: 276.13Kcal Contains: Milk, Soy, Gluten</td>
                         <td style="width:12%">Rs.42</td>
-                        <td style="width:12%">2</td>
+                        <td style="width:12%">
+                        	 <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn btn-danger btn-number"  style="border-radius: 10px 2px 2px 10px;" data-type="minus" data-field="">
+                                          <span >-</span>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity" class="form-control input-number" style="text-align:center" value="1" min="1" max="100">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn btn-success btn-number" style="border-radius: 2px 10px 10px 2px;" data-type="plus" data-field="">
+                                            <span >+</span>
+                                        </button>
+                                    </span>
+                                </div>
+                        </td>
                          <td style="width:12%">Rs.84</td>
                         <td>
                             <button class="btn btn-danger"  type="button">Delete</button>
@@ -101,7 +129,21 @@
                         <td style="width:25%">Crumb fried cheese burst patty Serving Size: 230gms Energy per 100 gms: 276.13Kcal Contains: Milk, Soy, Gluten</td>
                       
                         <td style="width:12%">Rs.100</td>
-                        <td style="width:12%">1</td>
+                        <td style="width:12%">
+                        	 <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn btn-danger btn-number"  style="border-radius: 10px 2px 2px 10px;"data-type="minus" data-field="">
+                                          <span >-</span>
+                                        </button>
+                                    </span>
+                                    <input type="text" id="quantity" name="quantity" class="form-control input-number" style="text-align:center" value="10" min="1" max="100">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn btn-success btn-number" style="border-radius: 2px 10px 10px 2px;" data-type="plus" data-field="">
+                                            <span >+</span>
+                                        </button>
+                                    </span>
+                                </div>
+                        </td>
                          <td style="width:12%">Rs.100</td>
                         <td>
                             <button class="btn btn-danger"  type="button">Delete</button>
@@ -118,6 +160,41 @@
             </table>
         </div>
      </div>
- 
+ <script>
+ $(document).ready(function(){
+
+	 var quantitiy=0;
+	    $('.quantity-right-plus').click(function(e){
+	         
+	         // Stop acting like a button
+	         e.preventDefault();
+	         // Get the field name
+	         var quantity = parseInt($('#quantity').val());
+	         
+	         // If is not undefined
+	             
+	             $('#quantity').val(quantity + 1);
+
+	           
+	             // Increment
+	         
+	     });
+
+	      $('.quantity-left-minus').click(function(e){
+	         // Stop acting like a button
+	         e.preventDefault();
+	         // Get the field name
+	         var quantity = parseInt($('#quantity').val());
+	         
+	         // If is not undefined
+	       
+	             // Increment
+	             if(quantity>0){
+	             $('#quantity').val(quantity - 1);
+	             }
+	     });
+	     
+	 });
+ </script>
 </body>
 </html>
